@@ -61,8 +61,10 @@ const renderHeader = () => `<header class="site-header">
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#bio">Bio</a>
         <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
         <a href="#publications">Publications</a>
         <a href="#works">Works</a>
+        <a href="#leadership">Leadership</a>
         <a href="#links">Links</a>
       </nav>
     </header>`;
@@ -117,7 +119,37 @@ ${site.bio.education
   .join("\n")}
               </ol>
             </div>
+            <div>
+              <h3>Awards</h3>
+              <ol>
+${(site.bio.awards || [])
+  .map(
+    (item) => `                <li>
+                  <strong>${escapeHtml(item.name)}</strong>
+                  <span>${escapeHtml(item.detail)}</span>
+                </li>`
+  )
+  .join("\n")}
+              </ol>
+            </div>
           </div>
+        </div>
+      </section>`;
+
+const renderCurrentProjects = () => `<section class="split-section projects-section" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <p class="kicker">Current</p>
+          <h2 id="projects-title">Current Projects</h2>
+        </div>
+        <div class="compact-card-grid">
+${site.currentProjects
+  .map(
+    (project) => `          <article class="compact-card">
+            <h3>${escapeHtml(project.title)}</h3>
+            <p>${escapeHtml(project.body)}</p>
+          </article>`
+  )
+  .join("\n")}
         </div>
       </section>`;
 
@@ -155,9 +187,9 @@ ${site.publications
             <p class="paper-authors">${escapeHtml(paper.authors)}</p>
             <p class="paper-venue">${escapeHtml(paper.venue)}</p>
             <p>${escapeHtml(paper.summary)}</p>
-            <div class="card-links">
+${paper.links?.length ? `            <div class="card-links">
 ${paper.links.map((link) => `              ${renderLink(link)}`).join("\n")}
-            </div>
+            </div>` : ""}
           </article>`
   )
   .join("\n")}
@@ -174,11 +206,31 @@ ${site.works
   .map(
     (work) => `          <article class="work-card">
             <a href="${escapeHtml(work.href)}"${linkAttrs(work.href)}>
-              <img src="${escapeHtml(work.image)}" alt="${escapeHtml(work.imageAlt)}" loading="lazy">
+              <img src="${escapeHtml(work.image)}" alt="${escapeHtml(work.imageAlt)}">
               <span>${escapeHtml(work.type)} · ${escapeHtml(work.year)}</span>
               <h3>${escapeHtml(work.title)}</h3>
               <p>${escapeHtml(work.body)}</p>
             </a>
+          </article>`
+  )
+  .join("\n")}
+        </div>
+      </section>`;
+
+const renderLeadership = () => `<section class="split-section leadership-section" id="leadership" aria-labelledby="leadership-title">
+        <div class="section-heading">
+          <p class="kicker">Service</p>
+          <h2 id="leadership-title">Leadership</h2>
+        </div>
+        <div class="leadership-list">
+${site.leadership
+  .map(
+    (item) => `          <article class="leadership-item">
+            <div>
+              <h3>${escapeHtml(item.title)}</h3>
+              <p>${escapeHtml(item.role)} · ${escapeHtml(item.year)}</p>
+            </div>
+            <p>${escapeHtml(item.body)}</p>
           </article>`
   )
   .join("\n")}
@@ -278,8 +330,10 @@ const homeHtml = pageShell({
       ${renderHero()}
       ${renderBio()}
       ${renderResearch()}
+      ${renderCurrentProjects()}
       ${renderPublications()}
       ${renderWorks()}
+      ${renderLeadership()}
       ${renderLinks()}
     </main>
     ${renderFooter()}`
@@ -332,7 +386,10 @@ const redirects = `# Legacy paths from the old GitHub Pages site.
 
 await rm(distDir, { recursive: true, force: true });
 await mkdir(distDir, { recursive: true });
-await cp(join(rootDir, "assets"), join(distDir, "assets"), { recursive: true });
+await cp(join(rootDir, "assets"), join(distDir, "assets"), {
+  recursive: true,
+  filter: (source) => !source.endsWith(".docx")
+});
 await copyFile(join(rootDir, "styles.css"), join(distDir, "styles.css"));
 await copyFile(join(rootDir, "script.js"), join(distDir, "script.js"));
 await writeFile(join(distDir, "index.html"), homeHtml);

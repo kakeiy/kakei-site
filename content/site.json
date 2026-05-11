@@ -2,14 +2,14 @@
   "baseUrl": "https://kakei.dev/",
   "siteName": "Kakei Yamamoto",
   "personName": "Kakei Yamamoto",
-  "tagline": "PhD student in EECS at MIT",
-  "metaDescription": "Kakei Yamamoto is an MIT EECS PhD student working at the intersection of statistical learning, machine learning, optimization, and generative modeling.",
+  "tagline": "MIT EECS PhD student",
+  "metaDescription": "Kakei Yamamoto is an MIT EECS PhD student working on inference, fine-tuning, generative models, machine learning theory, and optimization.",
   "ogImage": "assets/kakei-yamamoto.jpg",
   "hero": {
-    "kicker": "Statistical learning, optimization, and generative models",
+    "kicker": "MIT EECS · LIDS · IDSS",
     "heading": "Kakei Yamamoto",
-    "lead": "I study the mathematical foundations of modern machine learning, with an emphasis on statistical estimation, optimization, distribution shift, and generative modeling.",
-    "affiliation": "MIT EECS · LIDS · IDSS",
+    "lead": "PhD student in Computer Science at MIT, advised by Martin J. Wainwright. I work on inference, fine-tuning, generative models, machine learning theory, and optimization.",
+    "affiliation": "Research Assistant, Laboratory for Information & Decision Systems",
     "image": "assets/kakei-yamamoto.jpg",
     "imageAlt": "Kakei Yamamoto"
   },
@@ -36,16 +36,16 @@
     }
   ],
   "cv": {
-    "enabled": false,
-    "label": "CV",
-    "href": "assets/kakei-yamamoto-cv.pdf"
+    "enabled": true,
+    "label": "CV / Resume",
+    "href": "assets/resume_KakeiYamamoto.pdf"
   },
   "bio": {
     "heading": "Biography",
     "paragraphs": [
-      "I am a PhD student in the Department of Electrical Engineering and Computer Science at the Massachusetts Institute of Technology, advised by Martin J. Wainwright.",
-      "I am affiliated with the Laboratory for Information and Decision Systems and the Institute for Data, Systems, and Society. My research interests lie at the intersection of statistics, machine learning, and optimization.",
-      "Before MIT, I earned a Bachelor of Engineering in Mathematical Informatics from the University of Tokyo, where I worked on optimization for reinforcement learning with Taiji Suzuki."
+      "I am a PhD student in Computer Science at MIT EECS and a research assistant at LIDS, advised by Martin J. Wainwright. I am also affiliated with IDSS.",
+      "My current research focuses on inference, fine-tuning, generative models, machine learning theory, and optimization, especially in settings involving distribution shift and model distillation.",
+      "Before MIT, I worked on deep learning theory at RIKEN AIP and studied Applied Mathematical and Computer Science at the University of Tokyo under Taiji Suzuki."
     ],
     "education": [
       {
@@ -54,20 +54,53 @@
         "year": "2028 expected"
       },
       {
-        "degree": "BEng in Mathematical Informatics",
+        "degree": "MS in Computer Science",
+        "institution": "Massachusetts Institute of Technology",
+        "year": "2026"
+      },
+      {
+        "degree": "BEng in Applied Mathematical and Computer Science",
         "institution": "The University of Tokyo",
         "year": "2023"
       }
     ],
     "interests": [
-      "Statistical learning",
-      "Optimization",
-      "Diffusion and generative models",
-      "Reinforcement learning",
-      "Distribution shift"
+      "Inference",
+      "Fine-tuning",
+      "Generative models",
+      "Machine learning theory",
+      "Optimization"
+    ],
+    "awards": [
+      {
+        "name": "Takenaka Oversea Scholarship",
+        "detail": "Takenaka Scholarship Foundation, 2023-2028"
+      },
+      {
+        "name": "Kiyo Sakaguchi Scholarship",
+        "detail": "Prudential Life Insurance Co., 2023-2027"
+      }
     ]
   },
+  "currentProjects": [
+    {
+      "title": "TILT",
+      "body": "A current project studying how inference-time and fine-tuning procedures reshape model behavior in modern machine learning systems."
+    },
+    {
+      "title": "Implicit Importance Weighting",
+      "body": "A one-step unsupervised domain adaptation method designed to avoid unstable density-ratio estimation while retaining the effect of relative density reweighting."
+    },
+    {
+      "title": "Residual-as-Teacher",
+      "body": "A functional-gradient view of model distillation where learning from residuals mitigates teacher-bias propagation under high-dimensional covariate shift."
+    }
+  ],
   "researchThemes": [
+    {
+      "title": "Inference and Fine-tuning",
+      "body": "Studying adaptation and inference-time behavior in modern machine learning systems."
+    },
     {
       "title": "Distribution Shift",
       "body": "Understanding when learning systems can recover from biased or misspecified supervision, especially in student-teacher estimation."
@@ -86,6 +119,15 @@
     }
   ],
   "publications": [
+    {
+      "title": "Implicit Importance Weighting for Unsupervised Domain Adaptation",
+      "authors": "Kakei Yamamoto, Martin J. Wainwright",
+      "venue": "Manuscript in preparation",
+      "year": "current",
+      "summary": "Develops a stable one-step alternative to explicit density-ratio estimation for domain adaptation under distribution shift.",
+      "links": [],
+      "featured": true
+    },
     {
       "title": "Residual-as-Teacher: Mitigating Bias Propagation in Student-Teacher Estimation",
       "authors": "Kakei Yamamoto, Martin J. Wainwright",
@@ -169,13 +211,48 @@
   ],
   "works": [
     {
-      "title": "MIT JAM website",
-      "type": "Public web project",
+      "title": "BiteType! and BiteType! Classroom",
+      "type": "Released web game",
       "year": "2026",
-      "body": "Designed and built the public website for the Japanese Association of MIT, using a lightweight static build system and a bold editorial visual language.",
+      "body": "Created and released a browser typing game set in a burger stand, plus a classroom mode for no-login school practice, teacher links, class results, and guided typing settings.",
+      "href": "https://playbitetype.com/",
+      "image": "assets/work-bitetype.png",
+      "imageAlt": "BiteType! gameplay screen"
+    },
+    {
+      "title": "Japanese Association of MIT",
+      "type": "Community leadership",
+      "year": "2026",
+      "body": "Serving as JAM President. Led Hanami Festival as the representative organizer, planned Beneath the Great Wave from zero, and designed and built the JAM website.",
       "href": "https://github.com/kakeiy/mit-jam-site",
       "image": "assets/work-mit-jam.jpg",
-      "imageAlt": "MIT JAM website visual reference"
+      "imageAlt": "MIT JAM Hanami Festival gathering"
+    }
+  ],
+  "leadership": [
+    {
+      "title": "Japanese Association of MIT (JAM)",
+      "role": "President",
+      "year": "2025-",
+      "body": "Representative organizer for Hanami Festival 2026; originated and planned Beneath the Great Wave; built the organization website and programming infrastructure."
+    },
+    {
+      "title": "BiteType!",
+      "role": "Creator and developer",
+      "year": "2026",
+      "body": "Designed, implemented, and released the typing game and its classroom product, including gameplay, audio, analytics, teacher controls, and Cloudflare deployment."
+    },
+    {
+      "title": "Choyukai",
+      "role": "Executive board member, General Affairs Director",
+      "year": "past",
+      "body": "Served on the executive board of the University of Tokyo engineering student alumni/community organization."
+    },
+    {
+      "title": "UTokyo Philharmonic Orchestra",
+      "role": "President",
+      "year": "2020-2021",
+      "body": "Led the student orchestra while playing trumpet."
     }
   ],
   "footer": {

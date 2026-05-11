@@ -32,5 +32,6 @@ See `docs/cloudflare-launch.md` for the launch and legacy redirect checklist.
 
 ## CV
 
-The content file includes a disabled CV slot for `assets/kakei-yamamoto-cv.pdf`.
-The build only emits the CV link when the slot is enabled and the PDF exists.
+The content file links `assets/resume_KakeiYamamoto.pdf` as the public
+CV/resume. The build only emits the CV link when the slot is enabled and the
+PDF exists. Source document files such as `.docx` are ignored.
