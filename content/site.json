@@ -1,0 +1,184 @@
+{
+  "baseUrl": "https://kakei.dev/",
+  "siteName": "Kakei Yamamoto",
+  "personName": "Kakei Yamamoto",
+  "tagline": "PhD student in EECS at MIT",
+  "metaDescription": "Kakei Yamamoto is an MIT EECS PhD student working at the intersection of statistical learning, machine learning, optimization, and generative modeling.",
+  "ogImage": "assets/kakei-yamamoto.jpg",
+  "hero": {
+    "kicker": "Statistical learning, optimization, and generative models",
+    "heading": "Kakei Yamamoto",
+    "lead": "I study the mathematical foundations of modern machine learning, with an emphasis on statistical estimation, optimization, distribution shift, and generative modeling.",
+    "affiliation": "MIT EECS · LIDS · IDSS",
+    "image": "assets/kakei-yamamoto.jpg",
+    "imageAlt": "Kakei Yamamoto"
+  },
+  "links": [
+    {
+      "label": "Google Scholar",
+      "href": "https://scholar.google.com/citations?hl=en&user=FBmWuRoAAAAJ&view_op=list_works&sortby=pubdate"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/kakei-yamamoto-bb37461a0"
+    },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/kakeiy"
+    },
+    {
+      "label": "DBLP",
+      "href": "https://dblp.org/pid/334/7773.html"
+    },
+    {
+      "label": "OpenReview",
+      "href": "https://openreview.net/profile?id=~Kakei_Yamamoto1"
+    }
+  ],
+  "cv": {
+    "enabled": false,
+    "label": "CV",
+    "href": "assets/kakei-yamamoto-cv.pdf"
+  },
+  "bio": {
+    "heading": "Biography",
+    "paragraphs": [
+      "I am a PhD student in the Department of Electrical Engineering and Computer Science at the Massachusetts Institute of Technology, advised by Martin J. Wainwright.",
+      "I am affiliated with the Laboratory for Information and Decision Systems and the Institute for Data, Systems, and Society. My research interests lie at the intersection of statistics, machine learning, and optimization.",
+      "Before MIT, I earned a Bachelor of Engineering in Mathematical Informatics from the University of Tokyo, where I worked on optimization for reinforcement learning with Taiji Suzuki."
+    ],
+    "education": [
+      {
+        "degree": "PhD in Computer Science",
+        "institution": "Massachusetts Institute of Technology",
+        "year": "2028 expected"
+      },
+      {
+        "degree": "BEng in Mathematical Informatics",
+        "institution": "The University of Tokyo",
+        "year": "2023"
+      }
+    ],
+    "interests": [
+      "Statistical learning",
+      "Optimization",
+      "Diffusion and generative models",
+      "Reinforcement learning",
+      "Distribution shift"
+    ]
+  },
+  "researchThemes": [
+    {
+      "title": "Distribution Shift",
+      "body": "Understanding when learning systems can recover from biased or misspecified supervision, especially in student-teacher estimation."
+    },
+    {
+      "title": "Mean-Field Methods",
+      "body": "Analyzing Langevin dynamics, policy gradients, and distributional minimax optimization in regimes where feature learning matters."
+    },
+    {
+      "title": "Generative Modeling",
+      "body": "Studying conditional diffusion models, classifier-free guidance, and the mathematical structure behind generative sampling."
+    },
+    {
+      "title": "Neural Computation",
+      "body": "Exploring timing-based learning and sparse-firing regularization for spiking neural networks and efficient inference."
+    }
+  ],
+  "publications": [
+    {
+      "title": "Residual-as-Teacher: Mitigating Bias Propagation in Student-Teacher Estimation",
+      "authors": "Kakei Yamamoto, Martin J. Wainwright",
+      "venue": "arXiv, 2026",
+      "year": "2026",
+      "summary": "Proposes residual-as-teacher estimation to reduce teacher-bias propagation and proves excess-risk and convergence guarantees.",
+      "links": [
+        {
+          "label": "arXiv",
+          "href": "https://arxiv.org/abs/2603.25466"
+        }
+      ],
+      "featured": true
+    },
+    {
+      "title": "Mean Field Langevin Actor-Critic: Faster Convergence and Global Optimality beyond Lazy Learning",
+      "authors": "Kakei Yamamoto, Kazusato Oko, Zhuoran Yang, Taiji Suzuki",
+      "venue": "ICML, 2024",
+      "year": "2024",
+      "summary": "Develops mean-field Langevin actor-critic methods for feature-learning policy optimization.",
+      "links": [
+        {
+          "label": "PMLR",
+          "href": "https://proceedings.mlr.press/v235/yamamoto24a.html"
+        },
+        {
+          "label": "OpenReview",
+          "href": "https://openreview.net/forum?id=FOJE1kRcHG"
+        }
+      ],
+      "featured": true
+    },
+    {
+      "title": "Symmetric Mean-field Langevin Dynamics for Distributional Minimax Problems",
+      "authors": "Juno Kim, Kakei Yamamoto, Kazusato Oko, Zhuoran Yang, Taiji Suzuki",
+      "venue": "ICLR, 2024",
+      "year": "2024",
+      "summary": "Extends mean-field Langevin dynamics to minimax optimization over probability distributions.",
+      "links": [
+        {
+          "label": "ICLR",
+          "href": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/f2b1b2e974fa5ea622dd87f22815f423-Abstract-Conference.html"
+        },
+        {
+          "label": "OpenReview",
+          "href": "https://openreview.net/forum?id=YItWKZci78"
+        }
+      ],
+      "featured": true
+    },
+    {
+      "title": "Can Timing-Based Backpropagation Overcome Single-Spike Restrictions in Spiking Neural Networks?",
+      "authors": "Kakei Yamamoto, Yusuke Sakemi, Kazuyuki Aihara",
+      "venue": "IJCNN, 2024",
+      "year": "2024",
+      "summary": "Studies timing-based backpropagation beyond single-spike restrictions in spiking neural networks.",
+      "links": [
+        {
+          "label": "DOI",
+          "href": "https://doi.org/10.1109/IJCNN60899.2024.10651135"
+        }
+      ]
+    },
+    {
+      "title": "Sparse-firing regularization methods for spiking neural networks with time-to-first-spike coding",
+      "authors": "Yusuke Sakemi, Kakei Yamamoto, Takeo Hosomi, Kazuyuki Aihara",
+      "venue": "Scientific Reports, 2023",
+      "year": "2023",
+      "summary": "Introduces spike-timing-based regularization methods to reduce firing frequency in TTFS-coded spiking neural networks.",
+      "links": [
+        {
+          "label": "Nature",
+          "href": "https://www.nature.com/articles/s41598-023-50201-5"
+        },
+        {
+          "label": "arXiv",
+          "href": "https://arxiv.org/abs/2307.13007"
+        }
+      ]
+    }
+  ],
+  "works": [
+    {
+      "title": "MIT JAM website",
+      "type": "Public web project",
+      "year": "2026",
+      "body": "Designed and built the public website for the Japanese Association of MIT, using a lightweight static build system and a bold editorial visual language.",
+      "href": "https://github.com/kakeiy/mit-jam-site",
+      "image": "assets/work-mit-jam.jpg",
+      "imageAlt": "MIT JAM website visual reference"
+    }
+  ],
+  "footer": {
+    "note": "© 2026 Kakei Yamamoto"
+  }
+}
