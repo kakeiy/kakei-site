@@ -28,6 +28,8 @@ npm run build
 Configure `www.kakei.dev` as a Cloudflare Bulk Redirect to `https://kakei.dev`
 with query strings and path suffixes preserved.
 
+See `docs/cloudflare-launch.md` for the launch and legacy redirect checklist.
+
 ## CV
 
 The content file includes a disabled CV slot for `assets/kakei-yamamoto-cv.pdf`.
