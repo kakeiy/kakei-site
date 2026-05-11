@@ -21,7 +21,12 @@ GitHub-triggered production deploys.
 
 1. In the Pages project, add `kakei.dev` under Custom domains.
 2. Confirm Cloudflare creates/activates the DNS record for the apex domain.
-3. Add a Bulk Redirect for `www.kakei.dev` to `https://kakei.dev`:
+3. `www.kakei.dev` is handled by the `kakei-www-redirect` Worker route
+   (`www.kakei.dev/*`), which returns a `301` to the apex domain while
+   preserving path and query string.
+
+If replacing the Worker with a Bulk Redirect later, add a Bulk Redirect for
+`www.kakei.dev` to `https://kakei.dev`:
    - Status: `301`
    - Preserve query string
    - Subpath matching
