@@ -6,8 +6,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, "..");
 const distDir = join(rootDir, "dist");
 const contentPath = join(rootDir, "content", "site.json");
+const japaneseContentPath = join(rootDir, "content", "site-ja.json");
 
-const site = JSON.parse(await readFile(contentPath, "utf8"));
+let site = JSON.parse(await readFile(contentPath, "utf8"));
+const englishSite = site;
+const japaneseSite = JSON.parse(await readFile(japaneseContentPath, "utf8"));
 
 const escapeHtml = (value = "") =>
   String(value)
@@ -47,40 +50,45 @@ const renderLink = ({ href, label, className = "" }) =>
     href
   )}>${escapeHtml(label)}</a>`;
 
-const cvAssetPath = join(rootDir, site.cv?.href || "");
-const hasCv = Boolean(site.cv?.enabled && site.cv?.href && (await fileExists(cvAssetPath)));
-const actionLinks = [
-  ...site.links,
-  ...(hasCv ? [{ label: site.cv.label || "CV", href: site.cv.href }] : [])
-];
+const cvAssetPath = join(rootDir, englishSite.cv?.href || "");
+const hasCv = Boolean(englishSite.cv?.enabled && englishSite.cv?.href && (await fileExists(cvAssetPath)));
+const getActionLinks = () => {
+  const cvLink = hasCv ? [{ label: site.cv.label || "CV", href: site.cv.href }] : [];
+  return [...site.links.slice(0, 2), ...cvLink, ...site.links.slice(2)];
+};
 
-const renderHeader = () => `<header class="site-header">
-      <a class="wordmark" href="#top" aria-label="${escapeHtml(site.personName)} home">
+const renderHeader = () => {
+  const nav = site.nav || {};
+  const switcher = site.languageSwitch;
+
+  return `<header class="site-header">
+      <a class="wordmark" href="${escapeHtml(rootPath(site.homeHref || "#top"))}" aria-label="${escapeHtml(site.personName)} home">
         <span>${escapeHtml(site.personName)}</span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#bio">Bio</a>
-        <a href="#research">Research</a>
-        <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
-        <a href="#works">Works</a>
-        <a href="#leadership">Leadership</a>
-        <a href="#links">Links</a>
+        <a href="#bio">${escapeHtml(nav.bio || "Bio")}</a>
+        <a href="#research">${escapeHtml(nav.research || "Research")}</a>
+        <a href="#publications">${escapeHtml(nav.publications || "Publications")}</a>
+        <a href="#works">${escapeHtml(nav.works || "Works")}</a>
+        <a href="#leadership">${escapeHtml(nav.leadership || "Leadership")}</a>
+        <a href="#links">${escapeHtml(nav.links || "Links")}</a>${switcher ? `
+        <a class="language-switch" href="${escapeHtml(rootPath(switcher.href))}" aria-label="${escapeHtml(switcher.ariaLabel || "Switch language")}">EN/JP</a>` : ""}
       </nav>
     </header>`;
+};
 
-const renderHero = () => `<section class="hero" id="top" aria-labelledby="hero-title">
+const renderHero = () => `<section class="hero" id="top" aria-labelledby="hero-title" data-animate>
         <figure class="hero-photo">
           <img src="${escapeHtml(site.hero.image)}" alt="${escapeHtml(site.hero.imageAlt)}">
         </figure>
         <div class="hero-copy">
           <p class="kicker">${escapeHtml(site.hero.kicker)}</p>
           <h1 id="hero-title">${escapeHtml(site.hero.heading)}</h1>
+${site.hero.localName ? `          <p class="hero-local-name">${escapeHtml(site.hero.localName)}</p>` : ""}
           <p class="hero-lead">${escapeHtml(site.hero.lead)}</p>
           <p class="hero-affiliation">${escapeHtml(site.hero.affiliation)}</p>
           <div class="hero-actions" aria-label="Profile links">
-${actionLinks
-  .slice(0, 5)
+${getActionLinks()
   .map((link, index) =>
     renderLink({
       ...link,
@@ -92,22 +100,22 @@ ${actionLinks
         </div>
       </section>`;
 
-const renderBio = () => `<section class="split-section" id="bio" aria-labelledby="bio-title">
+const renderBio = () => `<section class="split-section" id="bio" aria-labelledby="bio-title" data-animate>
         <div class="section-heading">
-          <p class="kicker">Profile</p>
+          <p class="kicker">${escapeHtml(site.labels?.profile || "Profile")}</p>
           <h2 id="bio-title">${escapeHtml(site.bio.heading)}</h2>
         </div>
         <div class="bio-body">
 ${site.bio.paragraphs.map((paragraph) => `          <p>${escapeHtml(paragraph)}</p>`).join("\n")}
           <div class="bio-lists">
             <div>
-              <h3>Interests</h3>
+              <h3>${escapeHtml(site.labels?.interests || "Interests")}</h3>
               <ul>
 ${site.bio.interests.map((interest) => `                <li>${escapeHtml(interest)}</li>`).join("\n")}
               </ul>
             </div>
             <div>
-              <h3>Education</h3>
+              <h3>${escapeHtml(site.labels?.education || "Education")}</h3>
               <ol>
 ${site.bio.education
   .map(
@@ -120,7 +128,7 @@ ${site.bio.education
               </ol>
             </div>
             <div>
-              <h3>Awards</h3>
+              <h3>${escapeHtml(site.labels?.awards || "Awards")}</h3>
               <ol>
 ${(site.bio.awards || [])
   .map(
@@ -136,27 +144,10 @@ ${(site.bio.awards || [])
         </div>
       </section>`;
 
-const renderCurrentProjects = () => `<section class="split-section projects-section" id="projects" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <p class="kicker">Current</p>
-          <h2 id="projects-title">Current Projects</h2>
-        </div>
-        <div class="compact-card-grid">
-${site.currentProjects
-  .map(
-    (project) => `          <article class="compact-card">
-            <h3>${escapeHtml(project.title)}</h3>
-            <p>${escapeHtml(project.body)}</p>
-          </article>`
-  )
-  .join("\n")}
-        </div>
-      </section>`;
-
-const renderResearch = () => `<section class="band-section research-band" id="research" aria-labelledby="research-title">
+const renderResearch = () => `<section class="band-section research-band" id="research" aria-labelledby="research-title" data-animate>
         <div class="section-title-row">
-          <h2 id="research-title">Research</h2>
-          <p>Questions I am currently drawn to.</p>
+          <h2 id="research-title">${escapeHtml(site.labels?.research || "Research")}</h2>
+          <p>${escapeHtml(site.labels?.researchIntro || "Questions I am currently drawn to.")}</p>
         </div>
         <div class="theme-grid">
 ${site.researchThemes
@@ -170,12 +161,12 @@ ${site.researchThemes
         </div>
       </section>`;
 
-const renderPublications = () => `<section class="rail-section" id="publications" aria-labelledby="publications-title">
+const renderPublications = () => `<section class="rail-section" id="publications" aria-labelledby="publications-title" data-animate>
         <div class="section-title-row">
-          <h2 id="publications-title">Publications</h2>
-          <div class="rail-controls" aria-label="Publication carousel controls">
-            <button type="button" data-rail-prev aria-label="Previous publications">←</button>
-            <button type="button" data-rail-next aria-label="Next publications">→</button>
+          <h2 id="publications-title">${escapeHtml(site.labels?.publications || "Publications")}</h2>
+          <div class="rail-controls" aria-label="${escapeHtml(site.labels?.publicationControls || "Publication carousel controls")}">
+            <button type="button" data-rail-prev aria-label="${escapeHtml(site.labels?.previousPublications || "Previous publications")}">←</button>
+            <button type="button" data-rail-next aria-label="${escapeHtml(site.labels?.nextPublications || "Next publications")}">→</button>
           </div>
         </div>
         <div class="publication-rail" data-rail>
@@ -196,10 +187,10 @@ ${paper.links.map((link) => `              ${renderLink(link)}`).join("\n")}
         </div>
       </section>`;
 
-const renderWorks = () => `<section class="split-section works-section" id="works" aria-labelledby="works-title">
+const renderWorks = () => `<section class="split-section works-section" id="works" aria-labelledby="works-title" data-animate>
         <div class="section-heading">
-          <p class="kicker">Portfolio</p>
-          <h2 id="works-title">Selected Works</h2>
+          <p class="kicker">${escapeHtml(site.labels?.portfolio || "Portfolio")}</p>
+          <h2 id="works-title">${escapeHtml(site.labels?.works || "Selected Works")}</h2>
         </div>
         <div class="work-grid">
 ${site.works
@@ -217,10 +208,10 @@ ${site.works
         </div>
       </section>`;
 
-const renderLeadership = () => `<section class="split-section leadership-section" id="leadership" aria-labelledby="leadership-title">
+const renderLeadership = () => `<section class="split-section leadership-section" id="leadership" aria-labelledby="leadership-title" data-animate>
         <div class="section-heading">
-          <p class="kicker">Service</p>
-          <h2 id="leadership-title">Leadership</h2>
+          <p class="kicker">${escapeHtml(site.labels?.service || "Service")}</p>
+          <h2 id="leadership-title">${escapeHtml(site.labels?.leadership || "Leadership")}</h2>
         </div>
         <div class="leadership-list">
 ${site.leadership
@@ -237,16 +228,31 @@ ${site.leadership
         </div>
       </section>`;
 
-const renderLinks = () => `<section class="link-band" id="links" aria-labelledby="links-title">
-        <h2 id="links-title">Links</h2>
+const renderLinks = () => `<section class="link-band" id="links" aria-labelledby="links-title" data-animate>
+        <h2 id="links-title">${escapeHtml(site.labels?.links || "Links")}</h2>
         <div class="link-list">
-${actionLinks.map((link) => `          ${renderLink(link)}`).join("\n")}
+${getActionLinks().map((link) => `          ${renderLink(link)}`).join("\n")}
         </div>
       </section>`;
 
-const renderFooter = () => `<footer class="site-footer">
-      <p>${escapeHtml(site.footer.note)}</p>
-      <a href="#top">Back to top</a>
+const renderFooter = () => `<footer class="site-footer" data-animate>
+      <div class="footer-brand">
+        <strong>${escapeHtml(site.personName)}</strong>
+        <span>${escapeHtml(site.footer.subline || site.tagline)}</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+${getActionLinks()
+  .slice(0, 6)
+  .map((link) => `        ${renderLink(link)}`)
+  .join("\n")}
+        <a href="#top">${escapeHtml(site.labels?.backToTop || "Back to top")}</a>
+      </nav>
+      <div class="mit-affiliation">
+        <div class="mit-lockup">
+          <span>${escapeHtml(site.footer.affiliation || site.hero.kicker)}</span>
+        </div>
+        <p>${escapeHtml(site.footer.note)}</p>
+      </div>
     </footer>`;
 
 const renderMeta = (page = {}) => {
@@ -258,6 +264,9 @@ const renderMeta = (page = {}) => {
   return `<meta name="description" content="${escapeHtml(description)}">
     <meta name="robots" content="${page.noindex ? "noindex, follow" : "index, follow"}">
     <link rel="canonical" href="${escapeHtml(canonical)}">
+${(site.alternates || [])
+  .map((alternate) => `    <link rel="alternate" hreflang="${escapeHtml(alternate.lang)}" href="${escapeHtml(alternate.href)}">`)
+  .join("\n")}
     <link rel="sitemap" type="application/xml" href="${escapeHtml(absoluteUrl("sitemap.xml"))}">
     <meta property="og:type" content="profile">
     <meta property="og:site_name" content="${escapeHtml(site.siteName)}">
@@ -308,7 +317,7 @@ const jsonLd = () => `<script type="application/ld+json">
     </script>`;
 
 const pageShell = ({ body, page = {} }) => `<!doctype html>
-<html lang="en">
+<html lang="${escapeHtml(site.lang || "en")}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -324,29 +333,33 @@ ${body}
 </html>
 `;
 
-const homeHtml = pageShell({
-  body: `${renderHeader()}
+const renderHomePage = (activeSite) => {
+  site = activeSite;
+  return pageShell({
+    body: `${renderHeader()}
     <main>
       ${renderHero()}
       ${renderBio()}
       ${renderResearch()}
-      ${renderCurrentProjects()}
       ${renderPublications()}
       ${renderWorks()}
       ${renderLeadership()}
       ${renderLinks()}
     </main>
     ${renderFooter()}`
-});
+  });
+};
 
-const notFoundHtml = pageShell({
-  page: {
-    title: `Page not found | ${site.siteName}`,
-    description: `The requested page was not found on ${site.siteName}.`,
-    canonical: absoluteUrl("404.html"),
-    noindex: true
-  },
-  body: `${renderHeader()}
+const renderNotFoundPage = (activeSite) => {
+  site = activeSite;
+  return pageShell({
+    page: {
+      title: `Page not found | ${site.siteName}`,
+      description: `The requested page was not found on ${site.siteName}.`,
+      canonical: absoluteUrl("404.html"),
+      noindex: true
+    },
+    body: `${renderHeader()}
     <main class="not-found">
       <section>
         <p class="kicker">404</p>
@@ -356,15 +369,26 @@ const notFoundHtml = pageShell({
       </section>
     </main>
     ${renderFooter()}`
-});
+  });
+};
+
+const homeHtml = renderHomePage(englishSite);
+const japaneseHomeHtml = renderHomePage(japaneseSite);
+const notFoundHtml = renderNotFoundPage(englishSite);
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${escapeHtml(site.baseUrl)}</loc>
+    <loc>${escapeHtml(englishSite.baseUrl)}</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>${escapeHtml(new URL("index-ja.html", englishSite.baseUrl).href)}</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
 `;
@@ -372,7 +396,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 const robots = `User-agent: *
 Allow: /
 
-Sitemap: ${absoluteUrl("sitemap.xml")}
+Sitemap: ${new URL("sitemap.xml", englishSite.baseUrl).href}
 `;
 
 const redirects = `# Legacy paths from the old GitHub Pages site.
@@ -393,9 +417,10 @@ await cp(join(rootDir, "assets"), join(distDir, "assets"), {
 await copyFile(join(rootDir, "styles.css"), join(distDir, "styles.css"));
 await copyFile(join(rootDir, "script.js"), join(distDir, "script.js"));
 await writeFile(join(distDir, "index.html"), homeHtml);
+await writeFile(join(distDir, "index-ja.html"), japaneseHomeHtml);
 await writeFile(join(distDir, "404.html"), notFoundHtml);
 await writeFile(join(distDir, "sitemap.xml"), sitemap);
 await writeFile(join(distDir, "robots.txt"), robots);
 await writeFile(join(distDir, "_redirects"), redirects);
 
-console.log(`Built ${site.baseUrl} into dist/`);
+console.log(`Built ${englishSite.baseUrl} into dist/`);

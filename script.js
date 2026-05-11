@@ -1,5 +1,6 @@
 const header = document.querySelector(".site-header");
 const rails = Array.from(document.querySelectorAll("[data-rail]"));
+const animatedBlocks = Array.from(document.querySelectorAll("[data-animate]"));
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const scrollToHashTarget = (hash) => {
@@ -55,3 +56,20 @@ rails.forEach((rail) => {
     rail.scrollBy({ left: getStep(), behavior: prefersReducedMotion ? "auto" : "smooth" });
   });
 });
+
+if (!prefersReducedMotion && animatedBlocks.length) {
+  document.documentElement.classList.add("has-scroll-animations");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+  );
+
+  animatedBlocks.forEach((block) => observer.observe(block));
+}
