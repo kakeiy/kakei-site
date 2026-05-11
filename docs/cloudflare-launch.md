@@ -9,7 +9,7 @@ Create the Pages project from the Cloudflare dashboard:
 3. Use these build settings:
    - Project name: `kakei-site`
    - Production branch: `main`
-   - Build command: `npm run build`
+   - Build command: leave blank
    - Build output directory: `dist`
    - Root directory: `/`
 4. Deploy once and confirm the generated `*.pages.dev` URL works.

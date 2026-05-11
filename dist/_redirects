@@ -1,0 +1,7 @@
+# Legacy paths from the old GitHub Pages site.
+/publication /#publications 301
+/publication/ /#publications 301
+/publication/* /#publications 301
+/authors/admin /#bio 301
+/authors/admin/ /#bio 301
+/uploads/resume.pdf /#links 302

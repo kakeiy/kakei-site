@@ -100,9 +100,10 @@ h3 {
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: 136px minmax(0, 620px);
+  gap: clamp(30px, 5vw, 54px);
   align-items: center;
+  justify-content: start;
   padding: 54px var(--page-pad) 52px;
   background: var(--paper);
 }
@@ -116,15 +117,14 @@ h3 {
 }
 
 .hero-photo img {
-  width: 112px;
-  height: 112px;
+  width: 136px;
+  height: 136px;
   object-fit: cover;
   object-position: center;
-  border: 3px solid var(--ink);
 }
 
 .hero-copy {
-  width: min(720px, 100%);
+  width: min(620px, 100%);
 }
 
 .kicker,
@@ -321,8 +321,8 @@ h3 {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1px;
-  background: rgba(0, 0, 0, 0.38);
-  border: 1px solid rgba(0, 0, 0, 0.38);
+  /* background: rgba(0, 0, 0, 0.38); */
+  /* border: 1px solid rgba(0, 0, 0, 0.38); */
 }
 
 .theme-card {
@@ -401,12 +401,13 @@ h3 {
   display: grid;
   align-content: start;
   padding: 24px;
-  border: 2px solid var(--ink);
+  /* border: 2px solid var(--ink); */
   scroll-snap-align: start;
 }
 
 .publication-card.is-featured {
-  background: #fff4b5;
+  background: #f4d526;
+  /* background: #f4d526; */
 }
 
 .paper-year {
@@ -721,8 +722,8 @@ h3 {
   }
 
   .hero {
-    grid-template-columns: 64px minmax(0, 1fr);
-    gap: 16px;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 18px;
     padding-top: 32px;
     padding-bottom: 34px;
   }
@@ -740,8 +741,8 @@ h3 {
   }
 
   .hero-photo img {
-    width: 64px;
-    height: 64px;
+    width: 92px;
+    height: 92px;
   }
 
   .bio-lists,
@@ -760,5 +761,17 @@ h3 {
 
   .footer-links {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .hero-photo img {
+    width: 88px;
+    height: 88px;
   }
 }

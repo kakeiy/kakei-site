@@ -2,26 +2,22 @@
 
 Personal academic portfolio site for Kakei Yamamoto.
 
-## Local development
+## Editing
 
-```sh
-npm run dev
-```
+This is a plain static HTML/CSS/JS site. Edit files in `dist/` directly:
 
-The site is generated into `dist/` from `content/site.json`, `styles.css`, and
-`script.js`.
+- `dist/index.html`
+- `dist/index-ja.html`
+- `dist/styles.css`
+- `dist/script.js`
 
-## Build
-
-```sh
-npm run build
-```
+There is no JSON source and no build step.
 
 ## Cloudflare Pages
 
 - Repository: `kakeiy/kakei-site`
 - Production branch: `main`
-- Build command: `npm run build`
+- Build command: leave blank
 - Build output directory: `dist`
 - Canonical domain: `https://kakei.dev`
 
@@ -32,6 +28,5 @@ See `docs/cloudflare-launch.md` for the launch and legacy redirect checklist.
 
 ## CV
 
-The content file links `assets/resume_KakeiYamamoto.pdf` as the public
-CV/resume. The build only emits the CV link when the slot is enabled and the
-PDF exists. Source document files such as `.docx` are ignored.
+The public CV/resume is `dist/assets/resume_KakeiYamamoto.pdf`. Source document
+files such as `.docx` are ignored.
