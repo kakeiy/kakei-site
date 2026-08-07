@@ -3,26 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Longitude° is a time-zone-native calendar for people whose days cross cities, teams, and daylight-saving boundaries.">
-    <meta name="theme-color" content="#151922" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
+    <meta name="description" content="Longitude° is the simple calendar that switches every event to another time zone in one tap.">
+    <meta name="theme-color" content="#f8fbff">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://longitude.kakei.dev/">
     <link rel="icon" type="image/png" href="/assets/longitude-icon.png">
     <link rel="apple-touch-icon" href="/assets/longitude-icon.png">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Longitude°">
-    <meta property="og:title" content="Longitude° — Your calendar across time zones">
-    <meta property="og:description" content="Switch the display time zone. Your calendar stays anchored while every event moves to the right local time.">
+    <meta property="og:title" content="Longitude° — One tap. Every event, local.">
+    <meta property="og:description" content="Switch your entire calendar to another time zone in one tap.">
     <meta property="og:url" content="https://longitude.kakei.dev/">
-    <meta property="og:image" content="https://longitude.kakei.dev/assets/og.png">
-    <meta property="og:image:width" content="1731">
-    <meta property="og:image:height" content="909">
-    <meta property="og:image:alt" content="Longitude app icon and Month calendar with the message Your calendar across time zones">
+    <meta property="og:image" content="https://longitude.kakei.dev/assets/og-light.png">
+    <meta property="og:image:width" content="1728">
+    <meta property="og:image:height" content="910">
+    <meta property="og:image:alt" content="Longitude app icon and a light Month calendar view">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Longitude° — Your calendar across time zones">
-    <meta name="twitter:description" content="A time-zone-native calendar for people whose days cross cities.">
-    <meta name="twitter:image" content="https://longitude.kakei.dev/assets/og.png">
+    <meta name="twitter:title" content="Longitude° — One tap. Every event, local.">
+    <meta name="twitter:description" content="Switch your entire calendar to another time zone in one tap.">
+    <meta name="twitter:image" content="https://longitude.kakei.dev/assets/og-light.png">
     <title>Longitude° — Calendar across time zones</title>
     <link rel="stylesheet" href="/styles.css">
     <script src="/script.js" defer></script>
@@ -30,13 +29,12 @@
   <body>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Longitude home">
-        <img src="/assets/longitude-icon.png" alt="" width="42" height="42">
+        <img src="/assets/longitude-icon.png" alt="" width="40" height="40">
         <span>Longitude°</span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#how-it-works"><span class="lang-en">How it works</span><span class="lang-ja" hidden>使い方</span></a>
-        <a href="#privacy"><span class="lang-en">Privacy</span><span class="lang-ja" hidden>プライバシー</span></a>
-        <a href="#pro">Pro</a>
+        <a href="#screens"><span class="lang-en">Screens</span><span class="lang-ja" hidden>画面</span></a>
+        <a href="/privacy/"><span class="lang-en">Privacy</span><span class="lang-ja" hidden>プライバシー</span></a>
         <a href="/support/"><span class="lang-en">Support</span><span class="lang-ja" hidden>サポート</span></a>
         <button class="language-toggle" type="button" data-language-toggle aria-label="Switch language">日本語</button>
       </nav>
@@ -44,132 +42,97 @@
 
     <main>
       <section class="hero section-shell">
+        <figure class="hero-image hero-brand-image">
+          <img src="/assets/hero-light.png" alt="Longitude app icon, wordmark, and Month view on iPhone with the New York time zone button">
+        </figure>
         <div class="hero-copy">
-          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span><span class="lang-en">Time-zone-native calendar</span><span class="lang-ja" hidden>タイムゾーンから考えたカレンダー</span></p>
+          <p class="eyebrow"><span class="lang-en">The one-tap time zone calendar</span><span class="lang-ja" hidden>ワンタップのタイムゾーンカレンダー</span></p>
           <h1>
-            <span class="lang-en">Your calendar,<br><em>wherever</em> you need to think next.</span>
-            <span class="lang-ja" hidden>次に考えたい場所へ、<br><em>カレンダーごと</em>切り替える。</span>
+            <span class="lang-en"><em>1 tap.</em><br>Every event, local.</span>
+            <span class="lang-ja" hidden><em>ワンタップ。</em><br>すべての予定を現地時刻に。</span>
           </h1>
-          <p class="hero-lead lang-en">One tap re-projects your whole schedule into another time zone. The calendar stays anchored. Every event lands at the right local time.</p>
-          <p class="hero-lead lang-ja" hidden>ワンタップで予定全体を別のタイムゾーンへ再投影。カレンダーの日付配置はそのままに、すべての予定が正しい現地時刻へ移動します。</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#how-it-works"><span class="lang-en">See how it works</span><span class="lang-ja" hidden>使い方を見る</span></a>
-            <span class="release-note"><span class="lang-en">App Store release in progress</span><span class="lang-ja" hidden>App Store公開準備中</span></span>
+          <p class="hero-lead lang-en">Tap the time zone button and your whole calendar switches instantly. The calendar stays put. Only the events move.</p>
+          <p class="hero-lead lang-ja" hidden>タイムゾーンボタンをタップするだけで、カレンダー全体を即座に切り替え。カレンダーはそのまま、予定だけが動きます。</p>
+          <div class="hero-actions" id="download">
+            <div class="store-buttons" aria-label="Store availability">
+              <span class="store-badge" aria-label="Coming soon on the App Store">
+                <span class="store-mark" aria-hidden="true"></span>
+                <span><small class="lang-en">Coming soon on the</small><small class="lang-ja" hidden>まもなく公開</small><strong>App Store</strong></span>
+              </span>
+              <span class="store-badge" aria-label="Coming soon on Google Play">
+                <span class="play-mark" aria-hidden="true">▶</span>
+                <span><small class="lang-en">Coming soon on</small><small class="lang-ja" hidden>まもなく公開</small><strong>Google Play</strong></span>
+              </span>
+            </div>
+            <span class="release-note"><span class="lang-en">iPhone and Android</span><span class="lang-ja" hidden>iPhone・Android対応</span></span>
           </div>
-          <ul class="platform-list" aria-label="Supported platforms">
-            <li>iPhone</li>
-            <li>iPad</li>
-            <li>Android</li>
-          </ul>
-        </div>
-
-        <div class="hero-visual" aria-label="Longitude month calendar preview">
-          <div class="orbit orbit-one" aria-hidden="true"></div>
-          <div class="orbit orbit-two" aria-hidden="true"></div>
-          <figure class="phone-frame">
-            <img src="/assets/month-dark.png" alt="Longitude Month view showing connected, colorful event bands across a dark six-row calendar">
-          </figure>
-          <div class="zone-float zone-float-top">Tokyo <strong>08:30</strong></div>
-          <div class="zone-float zone-float-bottom">New York <strong>19:30</strong></div>
         </div>
       </section>
 
-      <section class="timezone-demo section-shell" id="how-it-works" aria-labelledby="demo-title">
+      <section class="value-strip section-shell" aria-label="Key features">
+        <article>
+          <span>01</span>
+          <h2><span class="lang-en">One tap, another time zone</span><span class="lang-ja" hidden>ワンタップで別のタイムゾーンへ</span></h2>
+          <p class="lang-en">Tap the time zone button or swipe vertically in Month view.</p>
+          <p class="lang-ja" hidden>タイムゾーンボタン、または月表示の上下スワイプで切り替えます。</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h2><span class="lang-en">Simple by design</span><span class="lang-ja" hidden>シンプルを、設計の中心に</span></h2>
+          <p class="lang-en">A focused calendar UI with no extra layers between you and your day.</p>
+          <p class="lang-ja" hidden>予定を見るまでに余計な操作を挟まない、無駄のないカレンダーです。</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h2><span class="lang-en">All your calendars together</span><span class="lang-ja" hidden>すべてのカレンダーを一か所に</span></h2>
+          <p class="lang-en">Bring device, Google Calendar, and Microsoft 365 calendars into one view.</p>
+          <p class="lang-ja" hidden>デバイス、Google Calendar、Microsoft 365の予定をまとめて表示します。</p>
+        </article>
+      </section>
+
+      <section class="screens-section section-shell" id="screens" aria-labelledby="screens-title">
         <div class="section-heading">
-          <p class="eyebrow"><span class="lang-en">One schedule. Many places.</span><span class="lang-ja" hidden>一つの予定を、いくつもの場所で。</span></p>
-          <h2 id="demo-title"><span class="lang-en">Switch perspective,<br>not the event.</span><span class="lang-ja" hidden>予定を変えずに、<br>見方だけを変える。</span></h2>
+          <p class="eyebrow"><span class="lang-en">Built for iPhone</span><span class="lang-ja" hidden>iPhoneのために</span></p>
+          <h2 id="screens-title"><span class="lang-en">A simple calendar.<br>Every place, in 1 tap.</span><span class="lang-ja" hidden>シンプルなカレンダー。<br>どの場所へも、1タップで。</span></h2>
         </div>
-        <div class="time-card" data-time-demo>
-          <div class="zone-tabs" role="group" aria-label="Preview time zones">
-            <button type="button" class="is-active" data-zone="tokyo" aria-pressed="true">Tokyo</button>
-            <button type="button" data-zone="new-york" aria-pressed="false">New York</button>
-            <button type="button" data-zone="london" aria-pressed="false">London</button>
-          </div>
-          <div class="time-event">
-            <div>
-              <p class="event-label"><span class="lang-en">Design review</span><span class="lang-ja" hidden>デザインレビュー</span></p>
-              <p class="event-meta" data-event-meta>Tuesday · Tokyo</p>
-            </div>
-            <time data-event-time>09:00–10:00</time>
-          </div>
-          <p class="time-note lang-en">The event keeps the same instant. Longitude° changes only how that instant is shown.</p>
-          <p class="time-note lang-ja" hidden>予定が表す瞬間は変わりません。Longitude°は、その瞬間の見え方だけを切り替えます。</p>
+        <div class="screen-gallery" aria-label="Longitude iPhone screenshots">
+          <figure class="screen-card"><img src="/assets/01-one-tap-month.png" alt="One tap time zone switching in Month view"></figure>
+          <figure class="screen-card"><img src="/assets/02-schedule.png" alt="Schedule view on iPhone"></figure>
+          <figure class="screen-card"><img src="/assets/03-day.png" alt="Day view on iPhone"></figure>
+          <figure class="screen-card"><img src="/assets/04-favorite-time-zones.png" alt="Favorite Time Zones on iPhone"></figure>
+          <figure class="screen-card"><img src="/assets/05-create-event.png" alt="Create event screen on iPhone"></figure>
+          <figure class="screen-card"><img src="/assets/06-teams-event-details.png" alt="Microsoft Teams event with guests on iPhone"></figure>
+          <figure class="screen-card"><img src="/assets/07-connected-accounts.png" alt="Google and Microsoft account connections on iPhone"></figure>
+          <figure class="screen-card"><img src="/assets/08-flight-details.png" alt="Flight event details on iPhone"></figure>
+          <figure class="screen-card"><img src="/assets/09-calendars.png" alt="Calendar visibility and color controls on iPhone"></figure>
+          <figure class="screen-card"><img src="/assets/10-dark-month.png" alt="Month view in dark mode on iPhone"></figure>
         </div>
       </section>
 
-      <section class="feature-section section-shell" aria-labelledby="features-title">
-        <div class="section-heading compact-heading">
-          <p class="eyebrow"><span class="lang-en">Made for calendar fluency</span><span class="lang-ja" hidden>カレンダーを直感的に</span></p>
-          <h2 id="features-title"><span class="lang-en">Less conversion.<br>More context.</span><span class="lang-ja" hidden>時差計算を減らして、<br>文脈を見失わない。</span></h2>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card feature-card-wide accent-card">
-            <span class="feature-number">01</span>
-            <h3><span class="lang-en">Favorite time zones, one tap away</span><span class="lang-ja" hidden>お気に入りTZをワンタップで</span></h3>
-            <p class="lang-en">Save the places you think in. Tap the time-zone chip—or flip vertically in Month view—to move between them.</p>
-            <p class="lang-ja" hidden>よく使う場所を保存。TZチップをタップ、またはMonth viewを上下にフリップして切り替えられます。</p>
-            <div class="chip-row" aria-hidden="true"><span>Tokyo</span><span>New York</span><span>London</span></div>
-          </article>
-          <article class="feature-card">
-            <span class="feature-number">02</span>
-            <h3><span class="lang-en">Multi-day events stay connected</span><span class="lang-ja" hidden>複数日の予定を一続きに</span></h3>
-            <p class="lang-en">Month view keeps timed and all-day events in the same clear band language, even across week boundaries.</p>
-            <p class="lang-ja" hidden>時刻付き予定も終日予定も同じ帯のルールで表示し、週をまたいでも関係を保ちます。</p>
-            <div class="band-sample" aria-hidden="true"><span></span><span></span><span></span></div>
-          </article>
-          <article class="feature-card">
-            <span class="feature-number">03</span>
-            <h3><span class="lang-en">Views that respond to your hands</span><span class="lang-ja" hidden>手の動きに応えるビュー</span></h3>
-            <p class="lang-en">Pinch horizontally between Schedule, Month, Week, 3-Day, and Day. Pinch vertically to tune the time scale.</p>
-            <p class="lang-ja" hidden>横ピンチでScheduleからDayまで移動。縦ピンチで一日の時間スケールを調整できます。</p>
-            <div class="scale-sample" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-          </article>
-          <article class="feature-card feature-card-wide account-card">
-            <span class="feature-number">04</span>
-            <div>
-              <h3><span class="lang-en">Your calendars, together</span><span class="lang-ja" hidden>複数のカレンダーを一か所に</span></h3>
-              <p class="lang-en">Use device calendars, connect multiple Google Calendar or Microsoft 365 accounts, and control visibility account by account.</p>
-              <p class="lang-ja" hidden>デバイスのカレンダーに加え、複数のGoogle CalendarやMicrosoft 365アカウントを接続し、表示をまとめて管理できます。</p>
-            </div>
-            <div class="provider-pills" aria-label="Supported calendar providers"><span>Device</span><span>Google</span><span>Microsoft 365</span></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="privacy-section" id="privacy">
-        <div class="section-shell privacy-layout">
-          <div>
-            <p class="eyebrow light-eyebrow"><span class="lang-en">Local-first by design</span><span class="lang-ja" hidden>ローカル優先の設計</span></p>
-            <h2><span class="lang-en">Your calendar is not our business.</span><span class="lang-ja" hidden>あなたの予定を、私たちのデータにしない。</span></h2>
-          </div>
-          <div class="privacy-copy">
-            <p class="lang-en">Longitude° has no app account, advertising, tracking, or application-operated analytics service. Connected calendar requests go directly to the provider you choose.</p>
-            <p class="lang-ja" hidden>Longitude°には独自アカウント、広告、トラッキング、独自のアクセス解析サービスがありません。接続したカレンダーへの通信は、選択した提供元へ直接送られます。</p>
-            <a class="text-link" href="/privacy/"><span class="lang-en">Read the privacy policy</span><span class="lang-ja" hidden>プライバシーポリシーを読む</span><span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-      </section>
-
-      <section class="pro-section section-shell" id="pro" aria-labelledby="pro-title">
-        <div class="pro-card">
-          <div class="pro-copy">
-            <p class="eyebrow">Longitude° Pro</p>
-            <h2 id="pro-title"><span class="lang-en">Save every place<br>your work takes you.</span><span class="lang-ja" hidden>必要な場所を、<br>好きなだけ保存。</span></h2>
-            <p class="lang-en">Free includes your local time and one additional time zone. Pro unlocks unlimited saved time zones and custom labels.</p>
-            <p class="lang-ja" hidden>無料版ではローカル時間と追加の1タイムゾーンを利用できます。Proでは保存数が無制限になり、カスタムラベルも使えます。</p>
-          </div>
-          <div class="price-card">
-            <span class="price">US $9.99</span>
-            <span class="price-note"><span class="lang-en">One-time purchase<br>Regional pricing may vary</span><span class="lang-ja" hidden>買い切り<br>地域により価格が異なる場合があります</span></span>
-          </div>
-        </div>
+      <section class="essentials section-shell">
+        <article>
+          <p class="eyebrow"><span class="lang-en">Private by design</span><span class="lang-ja" hidden>プライバシーを重視</span></p>
+          <h2><span class="lang-en">Your calendar stays yours.</span><span class="lang-ja" hidden>あなたの予定は、あなたのもの。</span></h2>
+          <p class="lang-en">No Longitude° account, ads, tracking, or application-operated analytics.</p>
+          <p class="lang-ja" hidden>Longitude°独自のアカウント、広告、トラッキング、独自運用のアクセス解析はありません。</p>
+          <a href="/privacy/"><span class="lang-en">Privacy policy</span><span class="lang-ja" hidden>プライバシーポリシー</span> <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="pro-summary">
+          <p class="eyebrow">Longitude° Pro</p>
+          <h2><span class="lang-en">Save every place you need.</span><span class="lang-ja" hidden>必要な場所を、好きなだけ。</span></h2>
+          <p class="lang-en">Unlock unlimited saved time zones and custom labels with a one-time purchase.</p>
+          <p class="lang-ja" hidden>買い切りで、保存タイムゾーン数とカスタムラベルを無制限に。</p>
+          <strong>US $9.99</strong>
+        </article>
       </section>
 
       <section class="closing section-shell">
-        <img src="/assets/longitude-icon.png" alt="Longitude app icon" width="112" height="112">
-        <h2><span class="lang-en">Know what time means<br>before it becomes a problem.</span><span class="lang-ja" hidden>時差が問題になる前に、<br>時間の意味を確かめる。</span></h2>
-        <p><span class="lang-en">Longitude° is preparing for its first App Store release.</span><span class="lang-ja" hidden>Longitude°は最初のApp Store公開に向けて準備中です。</span></p>
-        <a class="button button-secondary" href="/support/"><span class="lang-en">Contact support</span><span class="lang-ja" hidden>お問い合わせ</span></a>
+        <img src="/assets/longitude-icon.png" alt="Longitude app icon" width="92" height="92">
+        <div>
+          <h2><span class="lang-en">Longitude° is coming to iPhone and Android.</span><span class="lang-ja" hidden>Longitude°はiPhoneとAndroidへ。</span></h2>
+          <p><span class="lang-en">Support and legal information are available now.</span><span class="lang-ja" hidden>サポートと法的情報は現在ご確認いただけます。</span></p>
+        </div>
+        <a class="button button-secondary" href="/support/"><span class="lang-en">Support</span><span class="lang-ja" hidden>サポート</span></a>
       </section>
     </main>
 
