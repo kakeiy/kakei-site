@@ -273,6 +273,7 @@ button, input { font: inherit; }
 .screen-card {
   display: block;
   min-width: 0;
+  aspect-ratio: 1320 / 2868;
   margin: 0;
   padding: 0;
   border: 1px solid rgba(187, 205, 231, 0.82);
@@ -284,9 +285,9 @@ button, input { font: inherit; }
 }
 
 .screen-card img {
+  display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1320 / 2868;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -295,7 +296,7 @@ button, input { font: inherit; }
 .screen-card-video video {
   display: block;
   width: 100%;
-  aspect-ratio: 1320 / 2868;
+  height: 100%;
   background: #f8fbff;
   object-fit: cover;
 }
