@@ -192,7 +192,12 @@ button, input { font: inherit; }
   background: #080b11;
   color: var(--white);
   box-shadow: 0 12px 28px rgba(16, 27, 52, 0.18);
+  text-decoration: none;
 }
+
+a.store-badge { transition: transform 160ms ease, box-shadow 160ms ease; }
+a.store-badge:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(16, 27, 52, 0.24); }
+a.store-badge:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 
 .store-badge > span:last-child { display: grid; }
 .store-badge small { font-size: 0.59rem; line-height: 1.1; }
