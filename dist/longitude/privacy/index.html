@@ -18,7 +18,7 @@
     </header>
     <main class="legal-shell">
       <article class="legal-copy lang-en">
-        <p class="eyebrow">Legal · Last updated August 7, 2026</p>
+        <p class="eyebrow">Legal · Last updated August 21, 2026</p>
         <h1>Privacy Policy</h1>
         <p class="legal-lead">Longitude° is a local-first calendar client. This policy explains how the app handles information when you use device calendars, connect a provider, or purchase Longitude° Pro.</p>
 
@@ -34,8 +34,12 @@
         <p>Longitude° reads and, when you explicitly create or edit an event, writes to the calendar store already managed by your device. The app keeps no server copy. A short-lived display cache may keep event and calendar identifiers, titles, colors, and start/end values on the device so the current calendar can appear quickly after launch. It excludes descriptions, locations, guests, attachments, reminders, and meeting or provider URLs.</p>
         <p>If you connect Google Calendar or Microsoft 365, Longitude° sends calendar requests directly to that provider. It can create, edit, or delete events only in calendars the provider marks writable. Event fields such as guests, reminders, recurrence, locations, links, availability, attachments, rooms, and supported online meetings are sent directly to the selected provider as part of an explicit save.</p>
 
+        <h2>Google user data</h2>
+        <p>When you connect a Google account, Longitude° accesses the account identifier, name, email address, and profile image returned by Google Sign-In so it can identify the connected account in the app. It accesses calendar-list metadata such as calendar identifiers, names, colors, visibility, time zones, and access roles so it can list your calendars and determine which ones are writable.</p>
+        <p>For calendars you enable, Longitude° accesses event identifiers, titles, start and end times, all-day status, time zones, descriptions, locations, recurrence, organizers, guests and response status, reminders, availability and visibility, conference links, attachments, and provider URLs when those fields exist. This information is used only to display your schedule and to perform calendar actions that you explicitly request.</p>
+
         <h2>Contacts, rooms, and availability</h2>
-        <p>Longitude° does not request the device address book. If you open the provider contact picker while adding a guest, the app explains the request first. Only after you continue does it request Google's read-only Contacts scope or Microsoft Graph Contacts.Read and show matching names and email addresses. Results are not uploaded to a Longitude° server or retained as a separate contact database.</p>
+        <p>Longitude° does not request the device address book. If you open the provider contact picker while adding a guest, the app explains the request first. Only after you continue does it request Google's read-only Contacts scope or Microsoft Graph Contacts.Read and show matching names, email addresses, and available profile images. Results are used only to suggest guests. They are not uploaded to a Longitude° server or retained as a separate contact database.</p>
         <p>Availability checks send the entered email addresses and time range directly to Google Calendar or Microsoft Graph. Microsoft room search may request the additional Place.Read.All permission when you open that feature.</p>
 
         <h2>Gmail-derived reservations</h2>
@@ -47,6 +51,14 @@
         <h2>Local preferences and credentials</h2>
         <p>Favorite time zones, labels, display order, active time zone, theme and calendar visibility are stored in the app's private on-device storage. Account display metadata may also be stored locally. OAuth credentials are managed by Google Sign-In or Microsoft MSAL in platform-secure storage rather than ordinary app preferences.</p>
         <p>Disconnecting a provider removes its credential and calendars from Longitude°. Uninstalling the app removes local preferences and cache data but does not delete events stored by the device or provider.</p>
+
+        <h2>Security, retention, and deletion</h2>
+        <p>Requests to Google APIs, Microsoft Graph, and other supported providers are transmitted over HTTPS/TLS. OAuth credentials are kept in the operating system's protected Keychain or Keystore through the provider SDK, and local preferences and display cache are kept in the app's private sandbox.</p>
+        <p>The display-only event cache expires after no more than seven days and is replaced by live provider data after refresh. Connected-account display metadata and credentials remain only while the account is connected. Disconnecting the account removes them from Longitude°; clearing the app's data or uninstalling it removes local preferences and cache. Data stored by Google, Microsoft, the device calendar, or another service you selected remains with that provider and is controlled through that provider's settings.</p>
+
+        <h2>Disclosure, sale, and Google API Limited Use</h2>
+        <p>Longitude° does not sell Google user data or disclose it to advertisers, analytics providers, data brokers, or other third parties for advertising, marketing, creditworthiness, or profiling. Google user data is transferred only to Google APIs as needed to provide the calendar or contact action you requested, or to a destination you explicitly select—for example, sending an event's location to a map app after you tap the map action. Longitude° does not use Google user data for purposes unrelated to the app-facing calendar features described in this policy.</p>
+        <p>Longitude°'s use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements. Google Workspace API data is not used to develop, improve, or train generalized or non-personalized artificial intelligence or machine-learning models.</p>
 
         <h2>Longitude° Pro</h2>
         <p>Longitude° Pro is a one-time, non-consumable in-app purchase. Apple App Store or Google Play processes payment and returns an entitlement result. Longitude° does not receive or store payment-card details. The last verified entitlement may be cached locally; the platform store remains authoritative and Restore Purchases refreshes it.</p>
@@ -62,7 +74,7 @@
       </article>
 
       <article class="legal-copy lang-ja" hidden>
-        <p class="eyebrow">法的情報 · 最終更新 2026年8月7日</p>
+        <p class="eyebrow">法的情報 · 最終更新 2026年8月21日</p>
         <h1>プライバシーポリシー</h1>
         <p class="legal-lead">Longitude°はローカル優先のカレンダークライアントです。本ポリシーでは、デバイスのカレンダー、外部提供元との接続、Longitude° Proの購入に関する情報の取扱いを説明します。</p>
 
@@ -78,8 +90,12 @@
         <p>Longitude°はデバイスのOSが管理するカレンダーストアから予定を読み取り、ユーザーが明示的に作成・編集した場合にのみ書き込みます。アプリ独自のサーバーにはコピーしません。起動直後にカレンダーを表示するため、予定・カレンダーのID、タイトル、色、開始・終了時刻だけを含む短期間の表示キャッシュを端末内に保存する場合があります。説明、場所、参加者、添付、通知、会議リンク、提供元URLは含みません。</p>
         <p>Google CalendarまたはMicrosoft 365を接続すると、Longitude°は各提供元へ直接リクエストを送信します。提供元が書き込み可能としたカレンダーでのみ予定を作成・編集・削除できます。参加者、通知、繰り返し、場所、リンク、公開範囲、添付、会議室、対応するオンライン会議などは、ユーザーが保存した際に選択した提供元へ直接送信されます。</p>
 
+        <h2>Googleユーザーデータ</h2>
+        <p>Googleアカウントを接続すると、Longitude°はアプリ内で接続先を識別するため、Google Sign-Inが返すアカウント識別子、名前、メールアドレス、プロフィール画像へアクセスします。また、カレンダーを一覧表示し、書き込み可能か判断するため、カレンダーID、名称、色、表示状態、タイムゾーン、アクセス権限などのカレンダー一覧情報へアクセスします。</p>
+        <p>ユーザーが表示を有効にしたカレンダーについて、予定ID、タイトル、開始・終了時刻、終日設定、タイムゾーン、説明、場所、繰り返し、主催者、参加者と回答状況、通知、公開範囲、空き時間情報、会議リンク、添付ファイル、提供元URLが存在する場合にアクセスします。これらの情報は、予定を表示し、ユーザーが明示的に依頼したカレンダー操作を実行するためだけに使用します。</p>
+
         <h2>連絡先・会議室・空き時間</h2>
-        <p>デバイスの連絡先は要求しません。参加者追加画面で提供元の連絡先ボタンを押した場合、理由を説明し、続行した後にのみGoogleの読み取り専用ContactsスコープまたはMicrosoft GraphのContacts.Readを要求します。取得結果をLongitude°のサーバーへアップロードしたり、独自の連絡先データベースとして保存したりしません。</p>
+        <p>デバイスの連絡先は要求しません。参加者追加画面で提供元の連絡先ボタンを押した場合、理由を説明し、続行した後にのみGoogleの読み取り専用ContactsスコープまたはMicrosoft GraphのContacts.Readを要求し、名前、メールアドレス、利用可能なプロフィール画像を表示します。取得結果は参加者候補の提示にのみ使用し、Longitude°のサーバーへアップロードしたり、独自の連絡先データベースとして保存したりしません。</p>
         <p>空き時間確認では、入力したメールアドレスと時間範囲をGoogle CalendarまたはMicrosoft Graphへ直接送信します。Microsoftの会議室検索を開いた場合、追加でPlace.Read.All権限を要求することがあります。</p>
 
         <h2>Gmail由来の予約</h2>
@@ -91,6 +107,14 @@
         <h2>端末内設定と認証情報</h2>
         <p>お気に入りタイムゾーン、ラベル、順序、選択中のタイムゾーン、テーマ、カレンダー表示設定はアプリ専用の端末内領域に保存されます。アカウントの表示用情報も端末内に保存される場合があります。OAuth認証情報は通常の設定領域ではなく、Google Sign-InまたはMicrosoft MSALが安全なプラットフォーム領域で管理します。</p>
         <p>提供元を切断すると、その認証情報とカレンダー表示がLongitude°から削除されます。アプリを削除すると端末内設定とキャッシュは削除されますが、デバイスや提供元に保存された予定は削除されません。</p>
+
+        <h2>セキュリティ・保持期間・削除</h2>
+        <p>Google API、Microsoft Graph、その他の対応する提供元への通信にはHTTPS/TLSを使用します。OAuth認証情報は提供元SDKを通じてOSの保護されたKeychainまたはKeystoreに保存し、端末内設定と表示キャッシュはアプリ専用のサンドボックスに保存します。</p>
+        <p>表示専用の予定キャッシュは最長7日で期限切れとなり、更新後は提供元の最新データに置き換えられます。接続アカウントの表示情報と認証情報は、アカウントが接続されている間だけ保持します。アカウントを切断するとLongitude°から削除され、アプリのデータ消去またはアンインストールにより端末内設定とキャッシュが削除されます。Google、Microsoft、デバイスのカレンダー、またはユーザーが選択した外部サービスに保存されたデータは各提供元に残り、各提供元の設定から管理できます。</p>
+
+        <h2>開示・販売の禁止・Google API Limited Use</h2>
+        <p>Longitude°はGoogleユーザーデータを販売せず、広告、マーケティング、信用評価、プロファイリングのために広告事業者、分析事業者、データブローカーその他の第三者へ開示しません。Googleユーザーデータは、ユーザーが依頼したカレンダーまたは連絡先機能を提供するために必要なGoogle API、またはユーザーが明示的に選択した送信先にだけ転送されます。たとえば、ユーザーが地図操作を押した場合に限り、予定の場所を選択した地図アプリへ渡します。本ポリシーに記載するアプリ内のカレンダー機能と無関係な目的には使用しません。</p>
+        <p>Google APIから受け取った情報に関するLongitude°の使用および他のアプリへの転送は、Limited Use要件を含む<a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener noreferrer">Google API Services User Data Policy</a>に準拠します。Google Workspace APIのデータを、一般化された、または個人向けではないAI・機械学習モデルの開発、改善、学習に使用しません。</p>
 
         <h2>Longitude° Pro</h2>
         <p>Longitude° Proは買い切りの非消費型アプリ内購入です。支払いはApple App StoreまたはGoogle Playが処理し、Longitude°はカード情報を受け取りません。確認済みのPro状態を端末内に保持する場合がありますが、正式な購入状態はプラットフォームストアが管理し、「購入を復元」で再確認できます。</p>
