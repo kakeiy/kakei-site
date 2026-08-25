@@ -198,6 +198,10 @@ button, input { font: inherit; }
 a.store-badge { transition: transform 160ms ease, box-shadow 160ms ease; }
 a.store-badge:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(16, 27, 52, 0.24); }
 a.store-badge:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.store-badge-test {
+  border-color: rgba(45, 226, 210, 0.28);
+  background: linear-gradient(145deg, #102642, #0b4c59);
+}
 
 .store-badge > span:last-child { display: grid; }
 .store-badge small { font-size: 0.59rem; line-height: 1.1; }
@@ -395,6 +399,7 @@ a.store-badge:focus-visible { outline: 3px solid var(--blue); outline-offset: 3p
 .faq-grid article { padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); }
 .faq-grid h2 { margin: 0; font-size: 1.18rem; line-height: 1.25; }
 .faq-grid p { margin: 14px 0 0; color: var(--ink-soft); line-height: 1.65; }
+.faq-grid .button { margin-top: 18px; }
 
 @media (max-width: 900px) {
   .hero-copy { max-width: 720px; }
